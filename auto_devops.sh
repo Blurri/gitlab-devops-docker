@@ -1,8 +1,9 @@
 #!/bin/bash
 
 COMMAND=$0
-
+echo "as you command: $COMMAND"
 if [ "$COMMAND" == "ensure_namespace" ] ; then
+  echo "Ensure Namespace $KUBE_NAMESPACE"
   kubectl describe namespace "$KUBE_NAMESPACE" || kubectl create namespace "$KUBE_NAMESPACE"
 fi
 
@@ -22,6 +23,7 @@ if [ "$COMMAND" == "create_secret" ] ; then
 fi
 
 if [ "$COMMAND" == "deploy" ] ; then
+  echo "Deploy to kubernetes"
   helm upgrade --install \
     --wait \
     --set releaseOverride="$CI_ENVIRONMENT_SLUG" \
@@ -38,6 +40,7 @@ if [ "$COMMAND" == "deploy" ] ; then
 fi
 
 if [ "$COMMAND" == "delete" ] ; then
+  echo "Delete $name"
   name="$CI_ENVIRONMENT_SLUG"
 
   if [[ -n "$(helm ls -q "^$name$")" ]]; then
