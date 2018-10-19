@@ -1,6 +1,7 @@
 #!/bin/bash
-shift
-COMMAND=$0
+
+COMMAND=$1
+
 echo "as you command: $COMMAND"
 if [ "$COMMAND" == "ensure_namespace" ] ; then
   echo "Ensure Namespace $KUBE_NAMESPACE"
