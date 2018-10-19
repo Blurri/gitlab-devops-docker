@@ -1,5 +1,5 @@
 #!/bin/bash
-
+shift
 COMMAND=$0
 echo "as you command: $COMMAND"
 if [ "$COMMAND" == "ensure_namespace" ] ; then
