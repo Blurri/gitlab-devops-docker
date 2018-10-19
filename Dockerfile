@@ -11,3 +11,5 @@ ENV HELM_VERSION 2.6.1
 RUN curl "https://kubernetes-helm.storage.googleapis.com/helm-v${HELM_VERSION}-linux-amd64.tar.gz" | tar zx ;\
     mv linux-amd64/helm /usr/bin/ ;\
     helm version --client
+
+ADD auto_devops.sh /bin/auto_devops
